@@ -23,6 +23,6 @@ if __name__ == "__main__":
     s3 = boto3.client(
         aws_access_key_id=deployment_config["credentials"]["aws"]["aws_access_key_id"],
         aws_secret_access_key=deployment_config["credentials"]["aws"]["aws_secret_access_key"],
-        service="s3"
+        service_name="s3"
     )
     deployer.setup.createBucket(s3, deployment_config["workflowBucketName"])

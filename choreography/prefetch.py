@@ -35,6 +35,7 @@ def prefetch(s3: Any, currentStep: Dict[str, Any]) -> str:
     # make sure that the account used in credentials has permissions to access the object
     # TODO use os.path instead
     path = f"/tmp/{currentStep['data']['object']}"
+    print(f"p-p-p-path {path}")
     with open(path, "wb") as f:
         bucket = currentStep["data"]["bucket"]
         object = currentStep["data"]["object"]

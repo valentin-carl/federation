@@ -107,7 +107,7 @@ def createAwsDeployment(deployment: Dict[str, Any], name: str, fn: Dict[str, str
     with open(path.join(functionDir, "serverless.yml"), "w") as f:
         try:
             f.write(sls)
-        except ExceptionfunctionDir as e:
+        except Exception as e:
             print(e)
             print(f"error occurred while trying to write serverless.yml for aws lambda function {name}, skipping ...")
             return
@@ -167,7 +167,7 @@ def createGcpDeployment(deployment: Dict[str, Any], name: str, fn: Dict[str, str
     with open(path.join(functionDir, "serverless.yml"), "w") as f:
         try:
             f.write(sls)
-        except ExceptionfunctionDir as e:
+        except Exception as e:
             print(e)
             print(f"error occurred while trying to write serverless.yml for google cloud function {name}, skipping ...")
             return
@@ -231,16 +231,15 @@ def createTinyFaaSDeployment(deployment: Dict[str, Any], name: str, fn: Dict[str
     with open(path.join(functionDir, "serverless.yml"), "w") as f:
         try:
             f.write(sls)
-        except ExceptionfunctionDir as e:
+        except Exception as e:
             print(e)
-            print(
-                f"error occurred while trying to write serverless.yml for tinyfaas function {name}, skipping ...")
+            print(f"error occurred while trying to write serverless.yml for tinyfaas function {name}, skipping ...")
             return
 
 def handleAwsRequirements(requirementsPath: str, functionDir: str) -> None:
     # - [x] test
     assert path.exists(functionDir)
-    cmd = f"pip install -t {functionDir} -r {requirementsPath}"
+    cmd = f"pip download --platform linux_x86_64 -t {functionDir} -r {requirementsPath} "
     try:
         print(f"installing requirements for aws lambda function")
         result = subprocess.run(cmd, shell=True, check=True, capture_output=True, text=True)
@@ -271,8 +270,8 @@ def addRequirements(requirementsPath: str, requirements: List[str]) -> None:
             print(f"error while trying to add requirements to {requirementsPath}")
 
 def deploy(dst: str) -> None:
-    # TODO test
-    # - [ ] test
+    # - [x] test
+    # TODO windows?
     assert path.exists(dst)
     cmd = f"cd {dst} && sls deploy"
     try:

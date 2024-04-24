@@ -2,8 +2,10 @@ import copy
 from typing import Dict, Any, Optional
 
 
-def getCurrentStep(workflow: Dict[str, Any]) -> Dict[str, Any]:
+def getCurrentStep(workflow: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     # TODO turn workflow to optional and handle None case
+    if len(workflow.get("steps")) == 0:
+        return None
     minId = 1e12
     minStep = None
     for step in workflow["steps"]:
@@ -21,5 +23,5 @@ def updateWorkflow(workflow: Dict[str, Any]) -> Dict[str, Any]:
     workflow["steps"] = steps
     return workflow
 
-def getNextStep(workflow: Dict[str, Any]) -> Dict[str, Any]:
+def getNextStep(workflow: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     return getCurrentStep(updateWorkflow(workflow))
