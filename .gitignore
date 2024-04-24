@@ -1,4 +1,6 @@
 .idea
 .DS_Store
-README.md
 __pycache__
+eval.md
+deployment.json
+workflow.json
