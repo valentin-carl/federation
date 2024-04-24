@@ -1,0 +1,58 @@
+{
+  "name": "workflow-5001-a",
+  "bucket": "...",
+  "steps": [
+    {
+      "id": 0,
+      "function_name": "a",
+      "pre-fetch": false,
+      "expects_input": true,
+      "function_url": "...",
+      "provider": "AWS"
+    },
+    {
+      "id": 1,
+      "function_name": "b",
+      "pre-fetch": true,
+      "expects_input": true,
+      "function_url": "...",
+      "data": {
+        "bucket": "amazon-eimer-5000",
+        "object": "blob-name.txt"
+      },
+      "provider": "GCP",
+      "google_project_id": ""
+    },
+    {
+      "id": 2,
+      "function_name": "c",
+      "pre-fetch": true,
+      "expects_input": true,
+      "function_url": "...",
+      "data": {
+        "bucket": "amazon-eimer-5000",
+        "blob": "blob-name.txt"
+      },
+      "provider": "tinyFaaS"
+    }
+  ],
+  "credentials": {
+    "aws": {
+      "aws_access_key_id": "",
+      "aws_secret_access_key": ""
+    },
+    "google": {
+      "type": "service_account",
+      "project_id": "",
+      "private_key_id": "",
+      "private_key": "",
+      "client_email": "",
+      "client_id": "",
+      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+      "token_uri": "https://oauth2.googleapis.com/token",
+      "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+      "client_x509_cert_url": "",
+      "universe_domain": "googleapis.com"
+    }
+  }
+}

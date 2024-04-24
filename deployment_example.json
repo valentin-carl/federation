@@ -1,0 +1,73 @@
+{
+    "functions": {
+        "a": {
+            "handler": "wrapper_aws.wrapper_aws",
+            "requirements": "./functions/a/requirements.txt",
+            "provider": "AWS",
+            "method": "POST",
+            "region": "us-east-1"
+        },
+        "b": {
+            "handler": "wrapper_gcp_pubsub.wrapper_gcp",
+            "requirements": "./functions/b/requirements.txt",
+            "provider": "google",
+            "region": "europe-west10-a"
+        },
+        "c": {
+            "handler": "???",
+            "requirements": "???",
+            "provider": "tinyFaaS",
+            "tinyFaaSOptions": {
+                "env": "python3",
+                "threads": 1,
+                "source": "???",
+                "deployTo": [
+                    {
+                        "name": "tf-node-0"
+                    }
+                ]
+            }
+        }
+    },
+    "providers": {
+        "google": {
+            "project": "workflows-413409"
+        },
+        "aws": {
+            "region": "us-east-1"
+        },
+        "tinyFaaS": {
+            "nodes": [
+                {
+                    "name": "tf-node-0",
+                    "url": "http://localhost:8080"
+                }
+            ]
+        }
+    },
+    "serverless": {
+        "org": "valentincarl",
+        "app": "example-workflow",
+        "frameworkVersion": "3",
+        "project": "my-project"
+    },
+    "credentials": {
+        "aws": {
+          "aws_access_key_id": "",
+          "aws_secret_access_key": ""
+        },
+        "google": {
+          "type": "service_account",
+          "project_id": "",
+          "private_key_id": "",
+          "private_key": "",
+          "client_email": "",
+          "client_id": "",
+          "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+          "token_uri": "https://oauth2.googleapis.com/token",
+          "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+          "client_x509_cert_url": "",
+          "universe_domain": "googleapis.com"
+        }
+    }
+}
