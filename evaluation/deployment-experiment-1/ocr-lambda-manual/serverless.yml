@@ -1,0 +1,25 @@
+org: valentincarl
+app: workflow-eval
+service: ocr-lambda-manual
+frameworkVersion: '3'
+
+provider:
+  timeout: 30
+  name: aws
+  architecture: arm64
+  ecr:
+    images:
+      appimage:
+        path: ./ocr/
+
+functions:
+  hello:
+    image:
+      name: appimage
+    url: true
+    events:
+      - http:
+          async: true
+          method: ANY
+          path: /ocr
+          integration: AWS
