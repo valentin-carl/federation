@@ -1,0 +1,69 @@
+{
+    "name": "workflow-5001-a",
+    "bucket": "workflow-bucket-2001",
+    "steps": [
+        {
+            "id": 0,
+            "function_name": "check",
+            "pre-fetch": {
+                "pre-fetches": false,
+                "functionInputObjectName": "inputfn1"
+            },
+            "data": {
+                "bucket": "thisisnotaneimer5006",
+                "object": "data.pdf"
+            },
+            "expects_input": true,
+            "provider": "tinyFaaS",
+            "function_url": "http://34.32.64.15:8000/check"
+        },
+        {
+            "id": 1,
+            "function_name": "virus",
+            "pre-fetch": {
+                "pre-fetches": false,
+                "functionInputObjectName": "FUNCTION INPUT OBJECT NAME MUST BE REPLACED BY MIDDLEWARE WHEN PREFETCHING"
+            },
+            "data": {
+                "bucket": "thisisnotaneimer5006",
+                "object": "data.pdf"
+            },
+            "expects_input": true,
+            "provider": "google",
+            "google_project_id": "workflows-413409"
+        },
+        {
+            "id": 2,
+            "function_name": "ocr",
+            "pre-fetch": {
+                "pre-fetches": false,
+                "functionInputObjectName": "FUNCTION INPUT OBJECT NAME MUST BE REPLACED BY MIDDLEWARE WHEN PREFETCHING"
+            },
+            "data": {
+                "bucket": "thisisnotaneimer5006",
+                "object": "data.pdf"
+            },
+            "expects_input": true,
+            "provider": "aws",
+            "function_url": "https://99cwhykg99.execute-api.us-east-1.amazonaws.com/dev/ocr"
+        },
+        {
+            "id": 3,
+            "function_name": "email",
+            "pre-fetch": {
+                "pre-fetches": false,
+                "functionInputObjectName": "FUNCTION INPUT OBJECT NAME MUST BE REPLACED BY MIDDLEWARE WHEN PREFETCHING"
+            },
+            "data": {
+                "bucket": "thisisnotaneimer5006",
+                "object": "data.pdf"
+            },
+            "expects_input": true,
+            "provider": "aws",
+            "function_url": "https://xj9y3qk6c4.execute-api.us-east-1.amazonaws.com/dev/my-project/email"
+        }
+    ],
+    "credentials": {
+
+    }
+}

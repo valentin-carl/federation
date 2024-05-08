@@ -1,0 +1,15 @@
+functionInput = {
+            "experiment": {
+                "dataCollectorUrl": f"http://{collectorIp}:80/insert",
+                "tableName": experimentId,
+                "totalExecutionDuration": 0,  # for measuring total execution duration without latency inbetween
+                "timeStartMilli": t  # latency between start (client request) and end of workflow @ last function
+            },
+            # for baseline case
+            "input": {
+                "bucket": "workflow-eimer-2000",
+                "objectName": "data.pdf",
+                "aws_access_key_id": "",
+                "aws_secret_access_key": ""
+            }
+        }
