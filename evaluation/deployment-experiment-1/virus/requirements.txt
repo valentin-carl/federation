@@ -1,0 +1,5 @@
+pdfminer
+boto3
+boto3
+google-cloud-pubsub
+google-auth

@@ -1,0 +1,19 @@
+app: example-workflow
+frameworkVersion: 3
+functions:
+  email:
+    events:
+    - http:
+        async: true
+        method: POST
+        path: my-project/email
+    handler: wrapper_aws.wrapper_aws
+    url: true
+org: valentincarl
+provider:
+  architecture: arm64
+  name: aws
+  region: us-east-1
+  runtime: python3.10
+  timeout: 30
+service: email-service

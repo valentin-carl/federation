@@ -1,0 +1,17 @@
+custom:
+  tinyfaas:
+    functions:
+    - deployTo:
+      - name: tf-node-0
+      env: python3
+      name: check
+      source: ./functions/check
+      threads: 1
+    nodes:
+    - name: tf-node-0
+      url: http://34.32.64.15:8080
+plugins:
+- serverless-tinyfaas
+provider:
+  name: aws
+service: check-service

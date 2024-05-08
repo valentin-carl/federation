@@ -1,0 +1,15 @@
+frameworkVersion: 3
+functions:
+  virus:
+    events:
+    - event:
+        eventType: providers/cloud.pubsub/eventTypes/topic.publish
+        resource: projects/${self:provider.project, ""}/topics/virus
+    handler: wrapper_gcp
+plugins:
+- serverless-google-cloudfunctions
+provider:
+  name: google
+  project: workflows-413409
+  runtime: python39
+service: virus-service

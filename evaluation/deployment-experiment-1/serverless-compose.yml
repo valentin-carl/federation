@@ -1,0 +1,7 @@
+services:
+  check-service:
+    path: check
+  email-service:
+    path: email
+  virus-service:
+    path: virus
