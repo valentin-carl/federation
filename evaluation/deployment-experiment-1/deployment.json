@@ -1,0 +1,61 @@
+{
+    "workflowBucketName": "workflow-eimer-2000",
+    "functions": {
+        "check": {
+            "handler": "main.wrapper_tinyfaas",
+            "requirements": "./functions/check/requirements.txt",
+            "provider": "tinyFaaS",
+            "tinyFaaSOptions": {
+                "env": "python3",
+                "threads": 1,
+                "source": "???",
+                "deployTo": [
+                    {
+                        "name": "tf-node-0"
+                    }
+                ]
+            }
+        },
+        "virus": {
+            "handler": "wrapper_aws.wrapper_google",
+            "requirements": "./functions/virus/requirements.txt",
+            "provider": "google",
+            "region": "europe-west10-a"
+        },
+        "email": {
+            "handler": "wrapper_aws.wrapper_aws",
+            "requirements": "./functions/helloworld/requirements.txt",
+            "provider": "AWS",
+            "method": "POST",
+            "region": "us-east-1"
+        }
+    },
+    "providers": {
+        "google": {
+            "project": "workflows-413409"
+        },
+        "aws": {
+            "region": "us-east-1"
+        },
+        "tinyFaaS": {
+            "nodes": [
+                {
+                    "name": "tf-node-0",
+                    "url": "http://34.32.29.225:8080"
+                }
+            ]
+        }
+    },
+    "serverless": {
+        "org": "valentincarl",
+        "app": "example-workflow",
+        "frameworkVersion": "3",
+        "project": "my-project"
+    },
+    "credentials": {
+        "aws": {
+        },
+        "google": {
+        }
+    }
+}
