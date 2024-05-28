@@ -14,6 +14,26 @@ As we can optimize more if we have control over the FaaS-platform, we implemente
 For public clouds, we can pre-fetch data using the platform-specific wrappers as an add-on.
 While this doesn't increase performance as much as native pre-fetching, it still improves the total workflow durations given enough data.
 
+## Research
+
+If you use this software in a publication, please cite it as:
+
+### Text
+
+V. Carl, T. Schirmer, T. Pfandzelter, and D. Bermbach, **GeoFF: Federated Serverless Workflows with Data Pre-Fetching**, 2024.
+
+### BibTeX
+
+```bibtex
+@article{carl2024geoff,
+    author = "Carl, Valentin and Schirmer, Trever and Pfandzelter, Tobias and Bermbach, David",
+    title = "GeoFF: Federated Serverless Workflows with Data Pre-Fetching",
+    year = 2024,
+}
+```
+
+For a full list of publications, please see [our website](https://www.tu.berlin/en/3s/research/publications).
+
 ## Requirements
 
 These are the requirements for the deployer.
